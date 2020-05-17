@@ -1,4 +1,8 @@
 export interface Todo {
   id: number;
-  name: string;
+  title: string;
+  category: string;
+  dueDate: string;
+  important: boolean;
+  completed: boolean;
 }

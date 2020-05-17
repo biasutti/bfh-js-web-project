@@ -1,9 +1,9 @@
 import {Todo} from './todo';
 
 export const TODOS: Todo[] = [
-  {id: 11, name: 'Buy milk'},
-  {id: 12, name: 'Do homework'},
-  {id: 13, name: 'Call mom'},
-  {id: 14, name: 'Stay home'},
-  {id: 15, name: 'Clean kitchen'}
+  {id: 11, title: 'Buy milk', category: 'Home', dueDate: '2020-05-17', completed: false, important: false},
+  {id: 12, title: 'Do homework', category: 'Home', dueDate: '2020-05-17', completed: false, important: false},
+  {id: 13, title: 'Call mom', category: 'Home', dueDate: '2020-05-17', completed: false, important: false},
+  {id: 14, title: 'Stay home', category: 'Home', dueDate: '2020-05-17', completed: false, important: false},
+  {id: 15, title: 'Clean kitchen', category: 'Home', dueDate: '2020-05-17', completed: false, important: false}
 ];

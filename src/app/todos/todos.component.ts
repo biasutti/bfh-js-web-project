@@ -12,11 +12,11 @@ export class TodosComponent implements OnInit {
 
   todos: Todo[];
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService$: TodoService) {
   }
 
   getTodos(): void {
-    this.todoService.getTodos()
+    this.todoService$.getTodos()
       .subscribe(todos => this.todos = todos);
   }
 

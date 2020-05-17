@@ -15,7 +15,7 @@ export class TodoDetailComponent implements OnInit {
   @Input() todo: Todo;
 
   constructor(private route: ActivatedRoute,
-              private todoService: TodoService,
+              private todoService$: TodoService,
               private location: Location) {
   }
 
@@ -25,8 +25,13 @@ export class TodoDetailComponent implements OnInit {
 
   getTodo(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.todoService.getTodo(id)
+    this.todoService$.getTodo(id)
       .subscribe(todo => this.todo = todo);
+  }
+
+  save(): void {
+    this.todoService$.updateTodo(this.todo)
+      .subscribe(() => this.goBack());
   }
 
   goBack(): void {
