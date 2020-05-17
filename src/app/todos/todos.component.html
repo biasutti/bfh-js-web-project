@@ -5,12 +5,4 @@
     <span class="badge">{{todo.id}}</span> {{todo.name}}
   </li>
 </ul>
-<div *ngIf="selectedTodo">
-  <h2>{{selectedTodo.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedTodo.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedTodo.name" placeholder="name"/>
-    </label>
-  </div>
-</div>
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
