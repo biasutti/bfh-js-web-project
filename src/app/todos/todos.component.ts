@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../todo';
 import {TodoService} from '../todo.service';
-import {MessageService} from '../message.service';
 
 
 @Component({
@@ -13,14 +12,7 @@ export class TodosComponent implements OnInit {
 
   todos: Todo[];
 
-  selectedTodo: Todo;
-
-  constructor(private todoService: TodoService, private messageService: MessageService) {
-  }
-
-  onSelect(todo: Todo): void {
-    this.selectedTodo = todo;
-    this.messageService.add(`TodoService: Selected todo id=${todo.id}`);
+  constructor(private todoService: TodoService) {
   }
 
   getTodos(): void {
