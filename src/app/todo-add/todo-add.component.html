@@ -1,0 +1,27 @@
+<div>
+  <h2>Add todo</h2>
+  <div>
+    <label>Title:
+      <input [(ngModel)]="todo.title" placeholder="title"/>
+    </label>
+  </div>
+  <div>
+    <label>Category:
+      <select [(ngModel)]="todo.category" placeholder="category">
+        <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>Due Date:
+      <input [(ngModel)]="todo.dueDate" placeholder="date" type="date">
+    </label>
+  </div>
+  <div>
+    <label>Important:
+      <input [(ngModel)]="todo.important" type="checkbox" value="false">
+    </label>
+  </div>
+  <button (click)="save()">save</button>
+  <button (click)="goBack()">go back</button>
+</div>

@@ -6,6 +6,7 @@ import {catchError, tap} from 'rxjs/operators';
 
 import {MessageService} from './message.service';
 import {Todo} from './todo';
+import {Category} from './category';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,11 @@ export class TodoService {
 
   private _baseUrl = 'http://distsys.ch:1450';
   private _todosUrl = this._baseUrl + '/todos';
+  private _categoriesUrl = this._baseUrl + '/categories';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic QWxpY2U6Qm9iOTc='
+      Authorization: 'Basic Ymlhc3V0dGk6MTIzNA=='
     })
   };
 
@@ -34,12 +36,36 @@ export class TodoService {
       );
   }
 
+  getCategories(): Observable<Category[]> {
+    /*return this.http.get<Category[]>(this._categoriesUrl, this.httpOptions)
+      .pipe(
+        tap(_ => this.log('fetched categories')),
+        catchError(this.handleError<Category[]>('getCategories', []))
+      );*/
+
+    return of(this.getMockCategories());
+  }
+
+  private getMockCategories(): Category[] {
+    return [
+      {name: 'Home'}
+    ];
+  }
+
   getTodo(id: number): Observable<Todo> {
     const url = `${this._todosUrl}/${id}`;
     return this.http.get<Todo>(url, this.httpOptions)
       .pipe(
         tap(_ => this.log(`fetched todo id=${id}`)),
         catchError(this.handleError<Todo>(`getTodo id=${id}`))
+      );
+  }
+
+  createTodo(todo: Todo): Observable<any> {
+    return this.http.post(this._todosUrl, todo, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`create new todo`)),
+        catchError(this.handleError<Todo>(`createTodo`))
       );
   }
 

@@ -1,16 +1,16 @@
 import {Component, OnInit, Input} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 import {Todo} from '../todo';
 import {TodoService} from '../todo.service';
 
 
 @Component({
   selector: 'app-todo-detail',
-  templateUrl: './todo-detail.component.html',
-  styleUrls: ['./todo-detail.component.css']
+  templateUrl: './todo-edit.component.html',
+  styleUrls: ['./todo-edit.component.css']
 })
-export class TodoDetailComponent implements OnInit {
+export class TodoEditComponent implements OnInit {
 
   @Input() todo: Todo;
 
