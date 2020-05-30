@@ -3,6 +3,7 @@ import {User} from '../_models/user';
 import {Router} from '@angular/router';
 import {AuthService} from '../_services/auth.service';
 import {SharedDataService} from '../_services/shared-data.service';
+import {MessageService} from '../_services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService$: AuthService,
               private sharedData: SharedDataService,
+              private messageService: MessageService,
               private router: Router) {
   }
 
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
           this.sharedData.setTodoData(todos);
           this.router.navigate(['todos']);
         }, (err) => {
+          this.messageService.add('There was a problem logging you in');
           console.log('There was a problem logging you in');
           console.log(err);
         });
