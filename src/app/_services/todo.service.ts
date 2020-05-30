@@ -5,30 +5,46 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
 import {MessageService} from './message.service';
-import {Todo} from './todo';
-import {Category} from './category';
+import {Todo} from '../_models/todo';
+import {Category} from '../_models/category';
+import {User} from '../_models/user';
+import {SharedDataService} from './shared-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
+  user: User = Object.create(null);
+
+  // REST Endpoint configuration
   private _baseUrl = 'http://distsys.ch:1450';
   private _todosUrl = this._baseUrl + '/todos';
   private _categoriesUrl = this._baseUrl + '/categories';
-  httpOptions = {
+  httpOptions =  {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic Ymlhc3V0dGk6MTIzNA=='
+      Authorization: this.sharedData.getLoginToken()
     })
   };
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) {
+    private messageService: MessageService,
+    private sharedData: SharedDataService) {
+
+    this.user = sharedData.getUserData();
   }
 
   getTodos(): Observable<Todo[]> {
+    if (true) {
+      console.log("Get Todos");
+      return this.fetchTodos();
+    }
+    return of(this.sharedData.getTodosData());
+  }
+
+  fetchTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this._todosUrl, this.httpOptions)
       .pipe(
         tap(_ => this.log('fetched todos')),

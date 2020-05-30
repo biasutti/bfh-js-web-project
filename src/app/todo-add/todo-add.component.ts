@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Todo} from '../todo';
-import {TodoService} from '../todo.service';
+import {Todo} from '../_models/todo';
+import {TodoService} from '../_services/todo.service';
 import {Location} from '@angular/common';
-import {Category} from '../category';
+import {Category} from '../_models/category';
 
 @Component({
   selector: 'app-todo-add',

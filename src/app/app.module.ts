@@ -8,7 +8,8 @@ import {TodosComponent} from './todos/todos.component';
 import {TodoEditComponent} from './todo-edit/todo-edit.component';
 import {MessagesComponent} from './messages/messages.component';
 import {AppRoutingModule} from './app-routing.module';
-import { TodoAddComponent } from './todo-add/todo-add.component';
+import {TodoAddComponent} from './todo-add/todo-add.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TodoAddComponent } from './todo-add/todo-add.component';
     TodosComponent,
     TodoEditComponent,
     MessagesComponent,
-    TodoAddComponent
+    TodoAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
