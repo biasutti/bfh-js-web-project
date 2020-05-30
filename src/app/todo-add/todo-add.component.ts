@@ -3,6 +3,8 @@ import {Todo} from '../_models/todo';
 import {TodoService} from '../_services/todo.service';
 import {Location} from '@angular/common';
 import {Category} from '../_models/category';
+import {SharedDataService} from '../_services/shared-data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-add',
@@ -15,7 +17,8 @@ export class TodoAddComponent implements OnInit {
   categories: Category[] = [];
 
   constructor(private todoService$: TodoService,
-              private location: Location) { }
+              private location: Location) {
+  }
 
   getCategories(): void {
     this.todoService$.getCategories()

@@ -21,6 +21,10 @@ export class AuthService {
               private messageService: MessageService) {
   }
 
+  public isAuthenticated(): boolean {
+    return this.sharedData.getLoggedIn();
+  }
+
   processLogin(): Observable<Todo[]> {
     const httpOptions = {
       headers: new HttpHeaders({

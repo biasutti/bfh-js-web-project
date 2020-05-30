@@ -15,11 +15,7 @@ export class TodosComponent implements OnInit {
   todos: Todo[];
 
   constructor(private sharedData: SharedDataService,
-              private todoService: TodoService,
-              private router: Router) {
-    if (!this.sharedData.getLoggedIn()) {
-      this.router.navigate(['login']);
-    }
+              private todoService: TodoService) {
   }
 
   getTodos(): void {

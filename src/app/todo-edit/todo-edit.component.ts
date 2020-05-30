@@ -1,8 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Todo} from '../_models/todo';
 import {TodoService} from '../_services/todo.service';
+import {SharedDataService} from '../_services/shared-data.service';
 
 
 @Component({
